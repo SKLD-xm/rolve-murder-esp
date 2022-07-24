@@ -1,0 +1,73 @@
+local Players = game:GetService("Players")
+while true do
+   for _, player in pairs(Players:GetPlayers()) do
+      local character = workspace:WaitForChild(player.Name)
+      local stat = player:WaitForChild("Status")
+      local role = stat:WaitForChild("Role")
+      local hasGun = stat:WaitForChild("HasRevolver")
+      local fakeName = stat:WaitForChild("FakeName")
+      print(fakeName.value.." -- "..role.value..". hasRevolver: "..tostring(hasGun.value))
+      local ht = Instance.new("Highlight", character)
+      ht.Adornee = character
+      if role.value == "Bystander" then ht.FillColor = Color3.new(0, 0, 255)
+      elseif role.value == "Murderer" then ht.FillColor = Color3.new(255, 0, 0) end
+      if hasGun.value == true then ht.FillColor = Color3.new(255, 255, 0) end
+
+        local Foolname = Instance.new("BillboardGui")
+        local Foolname_2 = Instance.new("TextLabel")
+        
+        --Properties:
+        
+        Foolname.Name = "Foolname"
+        Foolname.Parent = character
+        Foolname.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        Foolname.Active = true
+        Foolname.Adornee = character.Head
+        Foolname.AlwaysOnTop = true
+        Foolname.LightInfluence = 1.000
+        Foolname.Size = UDim2.new(4, 0, 2, 0)
+        Foolname.StudsOffset = Vector3.new(0, 1.5, 0)
+        
+        Foolname_2.Name = "Foolname"
+        Foolname_2.Parent = Foolname
+        Foolname_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Foolname_2.BackgroundTransparency = 1.000
+        Foolname_2.Size = UDim2.new(1, 0, 1, 0)
+        Foolname_2.Font = Enum.Font.SourceSansBold
+        Foolname_2.Text = fakeName.Value
+        Foolname_2.TextColor3 = stat:WaitForChild("BColor").Value.Color
+        Foolname_2.TextScaled = true
+        Foolname_2.TextSize = 14.000
+        Foolname_2.TextStrokeTransparency = 0.000
+        Foolname_2.TextWrapped = true
+        print("pp")
+   end
+   for i, v in pairs(Workspace.Debris.Props:GetChildren()) do
+      if (v.BrickColor == BrickColor.new("Dark green") or v.BrickColor == BrickColor.new("Lime green"))  and v:FindFirstChild("Loot") then
+         local ht = Instance.new("Highlight", v)
+         ht.Adornee = v
+         ht.FillColor = Color3.new(0, 255, 0)
+      end
+   end
+   for i, v in pairs(Workspace.Debris:GetChildren()) do
+      if v.Name == "Revolver" then
+         local ht = Instance.new("Highlight", v)
+         ht.Adornee = v
+         ht.FillColor = Color3.new(255, 0, 255)
+      end
+   end
+   for i, v in pairs(Workspace.Debris:GetChildren()) do
+      if v.Name == "Knife" then
+         local ht = Instance.new("Highlight", v)
+         ht.Adornee = v
+         ht.FillColor = Color3.new(255, 255, 255)
+      end
+   end
+   wait(1)
+   for i, v in pairs(game.Workspace:GetDescendants()) do
+      if v:IsA("Highlight") or v.Name == "Foolname" then
+         v:Destroy()
+      end
+   end
+
+end
