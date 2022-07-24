@@ -3,9 +3,12 @@ while true do
    for _, player in pairs(Players:GetPlayers()) do
       local character = workspace:WaitForChild(player.Name)
       local stat = player:WaitForChild("Status")
+      local stat2 = player:WaitForChild("NRPBS")
       local role = stat:WaitForChild("Role")
       local hasGun = stat:WaitForChild("HasRevolver")
       local fakeName = stat:WaitForChild("FakeName")
+      local minHealth = stat2:WaitForChild("Health").Value
+      local maxHealth = stat2:WaitForChild("MaxHealth").Value
       print(fakeName.value.." -- "..role.value..". hasRevolver: "..tostring(hasGun.value))
       local ht = Instance.new("Highlight", character)
       ht.Adornee = character
@@ -34,12 +37,13 @@ while true do
         Foolname_2.BackgroundTransparency = 1.000
         Foolname_2.Size = UDim2.new(1, 0, 1, 0)
         Foolname_2.Font = Enum.Font.SourceSansBold
-        Foolname_2.Text = fakeName.Value
+        Foolname_2.Text = fakeName.Value.."<br>Loot:</br> "..tostring(stat:WaitForChild("RLoot").Value).." ("..tostring(minHealth/maxHealth).."% HP)"
         Foolname_2.TextColor3 = stat:WaitForChild("BColor").Value.Color
         Foolname_2.TextScaled = true
         Foolname_2.TextSize = 14.000
         Foolname_2.TextStrokeTransparency = 0.000
         Foolname_2.TextWrapped = true
+        Foolname_2.RichText = true
         print("pp")
    end
    for i, v in pairs(Workspace.Debris.Props:GetChildren()) do
