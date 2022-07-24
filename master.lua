@@ -38,7 +38,7 @@ while true do
         Foolname_2.BackgroundTransparency = 1.000
         Foolname_2.Size = UDim2.new(1, 0, 1, 0)
         Foolname_2.Font = Enum.Font.SourceSansBold
-        Foolname_2.Text = fakeName.Value.."<br>Loot:</br> "..tostring(stat:WaitForChild("RLoot").Value).." ("..tostring(minHealth/maxHealth).."% HP)"
+                Foolname_2.Text = fakeName.Value.."<br>Loot:</br> "..tostring(stat:WaitForChild("RLoot").Value).." ("..tostring((minHealth/maxHealth)*100).."% HP)<br></br>"..player.Name
         Foolname_2.TextColor3 = stat:WaitForChild("BColor").Value.Color
         Foolname_2.TextScaled = true
         Foolname_2.TextSize = 14.000
