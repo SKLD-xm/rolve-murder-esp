@@ -1,3 +1,4 @@
+-- 7/24/22 12:58 AM: Fixed an issue where it would break when adding the names sometimes so I added a PCALL to make sure it handles errors properly.
 local Players = game:GetService("Players")
 while true do
    for _, player in pairs(Players:GetPlayers()) do
@@ -20,7 +21,7 @@ while true do
         local Foolname_2 = Instance.new("TextLabel")
         
         --Properties:
-        
+        function sus()
         Foolname.Name = "Foolname"
         Foolname.Parent = character
         Foolname.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -37,7 +38,7 @@ while true do
         Foolname_2.BackgroundTransparency = 1.000
         Foolname_2.Size = UDim2.new(1, 0, 1, 0)
         Foolname_2.Font = Enum.Font.SourceSansBold
-        Foolname_2.Text = fakeName.Value.."<br>Loot:</br> "..tostring(stat:WaitForChild("RLoot").Value).." ("..tostring((minHealth/maxHealth)*100).."% HP)<br></br>"..player.Name
+        Foolname_2.Text = fakeName.Value.."<br>Loot:</br> "..tostring(stat:WaitForChild("RLoot").Value).." ("..tostring(minHealth/maxHealth).."% HP)"
         Foolname_2.TextColor3 = stat:WaitForChild("BColor").Value.Color
         Foolname_2.TextScaled = true
         Foolname_2.TextSize = 14.000
@@ -45,6 +46,12 @@ while true do
         Foolname_2.TextWrapped = true
         Foolname_2.RichText = true
         print("pp")
+        end
+        if pcall(sus) then
+           print("Success")
+        else
+        	print("Failure")
+        end
    end
    for i, v in pairs(Workspace.Debris.Props:GetChildren()) do
       if (v.BrickColor == BrickColor.new("Dark green") or v.BrickColor == BrickColor.new("Lime green"))  and v:FindFirstChild("Loot") then
