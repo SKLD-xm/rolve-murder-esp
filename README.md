@@ -6,6 +6,7 @@ A working ESP for the ROLVe game Murder
   - Red: Murderer
   - Blue: Bystander
   - Yellow: Bystander with weapon
+  - Dark red: Frozen person (Cold Killer Only)
 > Weapon colors
   - Magenta: Revolver
   - White: Knife (if thrown)
@@ -27,3 +28,6 @@ Knife:
 
 Gun:
 No picture :(
+
+
+Planning to add Aimbot and support for Infected gamemode
