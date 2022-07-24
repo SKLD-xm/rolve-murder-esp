@@ -17,10 +17,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
       if role.value == "Bystander" then ht.FillColor = Color3.new(0, 0, 255)
       elseif role.value == "Murderer" then ht.FillColor = Color3.new(255, 0, 0) end
       if hasGun.value == true then ht.FillColor = Color3.new(255, 255, 0) end
-
         local Foolname = Instance.new("BillboardGui")
         local Foolname_2 = Instance.new("TextLabel")
-        
         --Properties:
         function addName()
         Foolname.Name = "Foolname"
@@ -31,8 +29,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         Foolname.AlwaysOnTop = true
         Foolname.LightInfluence = 1.000
         Foolname.Size = UDim2.new(4, 0, 2, 0)
-        Foolname.StudsOffset = Vector3.new(0, 1.5, 0)
-        
+        Foolname.StudsOffset = Vector3.new(0, 1.5, 0)     
         Foolname_2.Name = "Foolname"
         Foolname_2.Parent = Foolname
         Foolname_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -62,7 +59,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
          ht.FillColor = Color3.new(0, 255, 0)
       end
    end
-   for i, v in pairs(Workspace:WaitForChild("Debris")s:GetChildren()) do
+   for i, v in pairs(Workspace:WaitForChild("Debris"):GetChildren()) do
       if v.Name == "Revolver" then
          local ht = Instance.new("Highlight")
          ht.Parent = v
