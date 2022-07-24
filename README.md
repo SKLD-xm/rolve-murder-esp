@@ -27,7 +27,9 @@ Knife:
 ![image](https://user-images.githubusercontent.com/109884864/180629920-9451d04f-4b7f-409e-81b7-d8fd9e4b88aa.png)
 
 Gun:
-No picture :(
+![image](https://user-images.githubusercontent.com/109884864/180630407-d4f2628a-c8c0-4cbf-83d7-80e567cd1ed6.png)
 
+Frozen person: 
+No image yet
 
 Planning to add Aimbot and support for Infected gamemode
