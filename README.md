@@ -12,7 +12,10 @@ A working ESP for the ROLVe game Murder
   - White: Knife (if thrown)
 > Loot colors
   - Green: All loot
-> Player's respective names
+> Player names
+  - Format: 
+  ![image](https://user-images.githubusercontent.com/109884864/180630893-760d2a65-6796-48c0-b587-4589a7575746.png)
+
 
 Loot:
 ![image](https://user-images.githubusercontent.com/109884864/180629798-db2add83-65c7-44f4-b0c6-cd709ffc130f.png)
