@@ -1,6 +1,5 @@
--- 7/24/22 12:58 AM: Fixed an issue where it would break when adding the names sometimes so I added a PCALL to make sure it handles errors properly.
 local Players = game:GetService("Players")
-game:GetService("RunService").Heartbeat:Connect(function()
+while true do
    for _, player in pairs(Players:GetPlayers()) do
       local character = workspace:WaitForChild(player.Name)
       local stat = player:WaitForChild("Status")
@@ -11,16 +10,17 @@ game:GetService("RunService").Heartbeat:Connect(function()
       local minHealth = stat2:WaitForChild("Health").Value
       local maxHealth = stat2:WaitForChild("MaxHealth").Value
       print(fakeName.value.." -- "..role.value..". hasRevolver: "..tostring(hasGun.value))
-      local ht = Instance.new("Highlight")
-      ht.Parent = character
+      local ht = Instance.new("Highlight", character)
       ht.Adornee = character
       if role.value == "Bystander" then ht.FillColor = Color3.new(0, 0, 255)
       elseif role.value == "Murderer" then ht.FillColor = Color3.new(255, 0, 0) end
       if hasGun.value == true then ht.FillColor = Color3.new(255, 255, 0) end
+
         local Foolname = Instance.new("BillboardGui")
         local Foolname_2 = Instance.new("TextLabel")
+        
         --Properties:
-        function addName()
+        function sus()
         Foolname.Name = "Foolname"
         Foolname.Parent = character
         Foolname.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -29,7 +29,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
         Foolname.AlwaysOnTop = true
         Foolname.LightInfluence = 1.000
         Foolname.Size = UDim2.new(4, 0, 2, 0)
-        Foolname.StudsOffset = Vector3.new(0, 1.5, 0)     
+        Foolname.StudsOffset = Vector3.new(0, 1.5, 0)
+        
         Foolname_2.Name = "Foolname"
         Foolname_2.Parent = Foolname
         Foolname_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -45,32 +46,29 @@ game:GetService("RunService").Heartbeat:Connect(function()
         Foolname_2.RichText = true
         print("pp")
         end
-        if pcall(addName) then
-           print("Name has been added")
+        if pcall(sus) then
+           print("Success")
         else
-           print("Name could not be attached, either because the player is dead or they have not loaded in fully.")
+        	print("Failure")
         end
    end
-   for i, v in pairs(Workspace:WaitForChild("Debris"):WaitForChild("Props"):GetChildren()) do
-      if (v.BrickColor == BrickColor.new("Dark green") or v.BrickColor == BrickColor.new("Lime green")) and v:FindFirstChild("Loot") then
-         local ht = Instance.new("Highlight")
-         ht.Parent = v
+   for i, v in pairs(Workspace.Debris.Props:GetChildren()) do
+      if (v.BrickColor == BrickColor.new("Dark green") or v.BrickColor == BrickColor.new("Lime green"))  and v:FindFirstChild("Loot") then
+         local ht = Instance.new("Highlight", v)
          ht.Adornee = v
          ht.FillColor = Color3.new(0, 255, 0)
       end
    end
-   for i, v in pairs(Workspace:WaitForChild("Debris"):GetChildren()) do
+   for i, v in pairs(Workspace.Debris:GetChildren()) do
       if v.Name == "Revolver" then
-         local ht = Instance.new("Highlight")
-         ht.Parent = v
+         local ht = Instance.new("Highlight", v)
          ht.Adornee = v
          ht.FillColor = Color3.new(255, 0, 255)
       end
    end
-   for i, v in pairs(Workspace:WaitForChild("Debris"):GetChildren()) do
+   for i, v in pairs(Workspace.Debris:GetChildren()) do
       if v.Name == "Knife" then
-         local ht = Instance.new("Highlight")
-         ht.Parent = v
+         local ht = Instance.new("Highlight", v)
          ht.Adornee = v
          ht.FillColor = Color3.new(255, 255, 255)
       end
@@ -81,4 +79,5 @@ game:GetService("RunService").Heartbeat:Connect(function()
          v:Destroy()
       end
    end
-end)
+
+end
